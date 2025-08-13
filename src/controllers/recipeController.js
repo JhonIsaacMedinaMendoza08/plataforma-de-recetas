@@ -1,9 +1,9 @@
 import { toObjectId } from '../utils/objectId.js'
-import { getUserDAO } from '../daos/usersDao.js';
+import { getUserDAO } from '../dataAccessObject/usersDao.js';
 import {
     createRecipeDAO, listRecipesDAO, getRecipeDAO,
     updateRecipeDAO, deleteRecipeDAO, searchByIngredientDAO
-} from '../daos/recipesDao.js';
+} from '../dataAccessObject/recipesDao.js';
 
 export const createRecipe = async (req, res) => {
     try {

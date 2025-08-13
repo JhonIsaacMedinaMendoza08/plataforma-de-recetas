@@ -1,5 +1,5 @@
 import { toObjectId } from '../utils/objectId.js'
-import { addIngredientDAO, listIngredientsDAO, deleteIngredientDAO } from '../daos/recipesDao.js';
+import { addIngredientDAO, listIngredientsDAO, deleteIngredientDAO } from '../dataAccessObject/recipesDao.js';
 
 
 export const addIngredient = async (req, res) => {

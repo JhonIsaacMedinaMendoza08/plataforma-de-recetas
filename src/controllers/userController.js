@@ -1,6 +1,6 @@
 import { toObjectId } from '../utils/objectId.js'
-import { createUserDAO, listUsersDAO, getUserDAO, updateUserDAO, deleteUserDAO } from '../daos/usersDao.js';
-import { cascadeDeleteRecipesByUserDAO, listUserRecipesDAO } from '../daos/recipesDao.js';
+import { createUserDAO, listUsersDAO, getUserDAO, updateUserDAO, deleteUserDAO } from '../dataAccessObject/usersDao.js';
+import { cascadeDeleteRecipesByUserDAO, listUserRecipesDAO } from '../dataAccessObject/recipesDao.js';
 
 export const createUser = async (req, res) => {
     try {
