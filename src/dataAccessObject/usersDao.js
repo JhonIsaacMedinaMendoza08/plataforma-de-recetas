@@ -1,4 +1,4 @@
-import { getDB } from '../config/db.js';
+import { getDB } from '../config/configDB.js';
 import { ObjectId } from 'mongodb';
 
 // función que devuelve la referencia a la colección users. si un día cambiamos el nombre de la colección, solo se cambia aquí.
