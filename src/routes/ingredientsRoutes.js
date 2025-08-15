@@ -3,8 +3,9 @@ import { addIngredient, listIngredients, deleteIngredient } from '../controllers
 
 const router = Router({ mergeParams: true });
 
-router.post('/:recipeId/ingredients', addIngredient);
-router.get('/:recipeId/ingredients', listIngredients);
-router.delete('/:recipeId/ingredients/:ingredientId', deleteIngredient);
+router.post('/post/:recipeId', addIngredient);
+router.get('/get/:recipeId', listIngredients);
+router.delete('/:recipeId/delete/:ingredientId', deleteIngredient);
 
 export default router;
+

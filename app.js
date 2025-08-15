@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use('/api/users', usersRouter);
 app.use('/api/recipes', recipesRouter);
-app.use('/api/recipes', ingredientsRouter);
+app.use('/api/ingredients', ingredientsRouter);
 
 app.use(notFound);
 

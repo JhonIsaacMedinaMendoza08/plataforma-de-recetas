@@ -3,11 +3,11 @@ import { createUser, listUsers, getUser, updateUser, deleteUser, listUserRecipes
 
 const router = Router();
 
-router.post('/', createUser);
+router.post('/create', createUser);
 router.get('/', listUsers);
-router.get('/:id', getUser);
-router.patch('/:id', updateUser);
-router.delete('/:id', deleteUser);
+router.get('/get/:id', getUser);
+router.patch('/patch/:id', updateUser);
+router.delete('/delete/:id', deleteUser);
 router.get('/:id/recipes', listUserRecipes);
 
 export default router;

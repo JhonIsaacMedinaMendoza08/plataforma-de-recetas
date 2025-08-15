@@ -52,7 +52,8 @@ export const updateRecipe = async (req, res) => {
         if (req.body?.description !== undefined) patch.description = req.body.description?.trim() || '';
         if (!Object.keys(patch).length) return res.status(400).json({ message: 'Nada para actualizar' });
         const recipe = await updateRecipeDAO(id, patch);
-        if (!recipe) return res.status(404).json({ message: 'Receta no encontrada' });
+            res.status(200).json({ message: "Receta actualizada Correctamente!!" });
+            if (!recipe) return res.status(404).json({ message: 'Receta no encontrada' });
         return res.json(recipe);
     } catch (e) {
         console.error(e);

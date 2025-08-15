@@ -46,8 +46,9 @@ export const updateUser = async (req, res) => {
         if (req.body?.fullName) patch.fullName = req.body.fullName.trim();
         if (req.body?.email) patch.email = req.body.email.toLowerCase().trim();
         if (!Object.keys(patch).length) return res.status(400).json({ message: 'Nada para actualizar' });
+        res.status(200).json({ message: 'Usuario Actualizado' });
         const user = await updateUserDAO(id, patch);
-        if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+
         return res.json(user);
     } catch (e) {
         if (e?.code === 11000) return res.status(409).json({ message: 'El email ya está registrado' });

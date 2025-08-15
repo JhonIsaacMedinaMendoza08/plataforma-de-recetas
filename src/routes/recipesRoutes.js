@@ -3,11 +3,11 @@ import { createRecipe, listRecipes, getRecipe, updateRecipe, deleteRecipe, searc
 
 const router = Router();
 
-router.post('/', createRecipe);
-router.get('/', listRecipes);
+router.post('/create', createRecipe);
+router.get('/get', listRecipes);
 router.get('/search', searchByIngredient);
-router.get('/:id', getRecipe);
-router.patch('/:id', updateRecipe);
-router.delete('/:id', deleteRecipe);
+router.get('/getRecipe/:id', getRecipe);
+router.patch('/patch/:id', updateRecipe);
+router.delete('/delete/:id', deleteRecipe);
 
 export default router;

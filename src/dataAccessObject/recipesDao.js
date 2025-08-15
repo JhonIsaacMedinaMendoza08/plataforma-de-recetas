@@ -57,12 +57,13 @@ export async function listUserRecipesDAO(userId) {
 
 export async function addIngredientDAO(recipeId, name) {
     const ing = { _id: new ObjectId(), name: name.toLowerCase().trim() };
-    const { value } = await recipes().findOneAndUpdate(
+    const res = await recipes().updateOne(
         { _id: new ObjectId(recipeId) },
-        { $push: { ingredients: ing }, $set: { updatedAt: new Date() } },
-        { returnDocument: 'after' }
+        { $push: { ingredients: ing }, $set: { updatedAt: new Date() } }
     );
-    return value;
+    if (res.matchedCount === 0) return null; // no existía la receta
+    // Opcional: devolver receta actualizada
+    return recipes().findOne({ _id: new ObjectId(recipeId) }, { projection: { title: 1, ingredients: 1 } });
 }
 
 export async function listIngredientsDAO(recipeId) {
@@ -71,12 +72,15 @@ export async function listIngredientsDAO(recipeId) {
 }
 
 export async function deleteIngredientDAO(recipeId, ingredientId) {
-    const { value } = await recipes().findOneAndUpdate(
+    const res = await recipes().updateOne(
         { _id: new ObjectId(recipeId) },
-        { $pull: { ingredients: { _id: new ObjectId(ingredientId) } }, $set: { updatedAt: new Date() } },
-        { returnDocument: 'after' }
+        { $pull: { ingredients: { _id: new ObjectId(ingredientId) } }, $set: { updatedAt: new Date() } }
     );
-    return value;
+    if (res.matchedCount === 0) return null;
+    return recipes().findOne(
+        { _id: new ObjectId(recipeId) },
+        { projection: { title: 1, ingredients: 1 } }
+    );
 }
 
 export async function searchByIngredientDAO(term) {
